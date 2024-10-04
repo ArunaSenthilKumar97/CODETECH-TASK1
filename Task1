@@ -1,0 +1,156 @@
+#index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <form id="task-form">
+            <input type="text" id="task-input" placeholder="Add a new task..." required>
+            <button type="submit">Add Task</button>
+        </form>
+        <ul id="task-list"></ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+#style.css
+// Select the form, input field, and task list elements
+const taskForm = document.getElementById('task-form');
+const taskInput = document.getElementById('task-input');
+const taskList = document.getElementById('task-list');
+
+// Add an event listener to the form to handle task submissions
+taskForm.addEventListener('submit', function(e) {
+    e.preventDefault();  // Prevent form from refreshing the page
+
+    // Get the task text from the input field
+    const taskText = taskInput.value;
+    
+    // Create a new list item (li) element for the task
+    const li = document.createElement('li');
+    li.textContent = taskText;
+
+    // Add a complete button to mark tasks as done
+    const completeButton = document.createElement('button');
+    completeButton.textContent = 'Complete';
+    li.appendChild(completeButton);
+
+    // Add a delete button to remove tasks
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    li.appendChild(deleteButton);
+
+    // Add the new task to the task list
+    taskList.appendChild(li);
+
+    // Clear the input field
+    taskInput.value = '';
+
+    // Mark task as completed
+    completeButton.addEventListener('click', function() {
+        li.classList.toggle('completed');
+    });
+
+    // Delete task
+    deleteButton.addEventListener('click', function() {
+        li.remove();
+    });
+});
+
+
+
+#script.css
+
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+/* Heading Styling */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Task Form Styling */
+form {
+    display: flex;
+    justify-content: space-between;
+}
+
+#task-input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Task List Styling */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+li button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+li button:hover {
+    background-color: #c82333;
+}
+
