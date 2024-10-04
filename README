@@ -1,0 +1,21 @@
+ Project Overview
+The To-Do List web application allows users to:
+
+Add tasks.
+Mark tasks as completed.
+Delete tasks.
+View all their tasks in an intuitive list format
+
+
+ How to Use the Application
+Add a Task:
+
+Enter the task in the input field and click the "Add Task" button.
+The task will appear in the list below.
+Mark as Completed:
+
+Click on the task text to mark it as completed.
+The task will get a line-through effect and a light green background.
+Delete a Task:
+
+Press the "Delete" button next to a task to remove it from the list.
